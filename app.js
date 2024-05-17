@@ -5,6 +5,7 @@ const cors = require('cors')
 const AppError = require('./utils/AppError');
 const globalAppError = require('./controllers/errorController');
 
+const healthRouter = require('./routes/healthcheckRoutes');
 const dataRouter = require('./routes/audrinoRoutes');
 const companyRouter = require('./routes/companyRoutes');
 const automobileRouter = require('./routes/automobileRoutes');
@@ -24,7 +25,8 @@ app.use((req, res, next) => {
 });
 
 // Route handlers
-app.use('/api/v1/data', dataRouter); // Route mounting
+app.use('/api/v1/health-check', healthRouter); // Route mounting
+app.use('/api/v1/data', dataRouter);
 app.use('/api/v1/company', companyRouter);
 app.use('/api/v1/automobile', automobileRouter);
 
